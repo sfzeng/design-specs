@@ -104,11 +104,17 @@ Like AWS S3, OpenSDS supports a waterfall model for transitioning between storag
 As showed in the diagram, the transition from one storage class to another is one-way.
 
 Depends on cloud vendor, there may have minimum storage time requirements, that means you need to pay minimum storage charges, for example:
+
 1.For AWS, an objects must be stored at least 30 days in the storage class of STANDARD, STANDARD_IA, INTELLIGENT_TIERING, ONEZONE_IA, and at least 90 days in GLACIER;
+
 2.For Azure, a blob must be stored at least 30 days in STANDARD_IA (cool tier in Azure), and at least 180 days in GLACIER (archive tier in Azure).
+
 For OpenSDS, lifecycle transitions have the following constraints:
+
 1.Objects must be stored at least 30 days in the current storage class before you can transition them to STANDARD_IA or ONEZONE_IA. For example, you cannot create a lifecycle rule to transition objects to the STANDARD_IA storage class one day after you create them.
+
 2.For larger objects, there is a cost benefit for transitioning to INTELLIGENT_TIERING. OpenSDS does not transition objects that are smaller than 128 KB to the INTELLIGENT_TIERING storage class because it's not cost effective.
+
 3.For cross-cloud transition, the supported target storage class depends on the type of target backend. The following table shows which storage class of each backend type can be used as target storage class.
 
 |  | STANDARD | STANDARD_IA | INTELLIGENT_TIERING | ONEZONE_IA | GLACIER |
@@ -124,8 +130,7 @@ For OpenSDS, lifecycle transitions have the following constraints:
 Conflicting Lifecycle Actions
 For OpenSDS, expiration action is precedence over transition action. 
 For example, there are two rules as below:
-'```
-<LifecycleConfiguration>
+'```<LifecycleConfiguration>
   <Rule>
     <ID>Rule 1</ID>
     <Filter>
@@ -147,8 +152,8 @@ For example, there are two rules as below:
       <Days>365</Days>
     </Transition>
    </Rule>
-</LifecycleConfiguration>
-```'
+</LifecycleConfiguration>```'
+
 In this case, OpenSDS just chooses the expiration action on these objects.
 Overlapping Prefixes Resulting in Conflicting Lifecycle Actions
 For example, there are two rules as below:
