@@ -130,7 +130,7 @@ For OpenSDS, lifecycle transitions have the following constraints:
 Conflicting Lifecycle Actions
 For OpenSDS, expiration action is precedence over transition action. 
 For example, there are two rules as below:
-'```<LifecycleConfiguration>
+```<LifecycleConfiguration>
   <Rule>
     <ID>Rule 1</ID>
     <Filter>
@@ -152,7 +152,7 @@ For example, there are two rules as below:
       <Days>365</Days>
     </Transition>
    </Rule>
-</LifecycleConfiguration>```'
+</LifecycleConfiguration>```
 
 In this case, OpenSDS just chooses the expiration action on these objects.
 Overlapping Prefixes Resulting in Conflicting Lifecycle Actions
