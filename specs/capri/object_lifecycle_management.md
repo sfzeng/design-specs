@@ -370,7 +370,8 @@ Content-MD5: MD5
 ```
 Request Body
 The following is an XML example of a request body for restoring an archive.
-```<RestoreRequest>
+```
+<RestoreRequest>
    <Days>2</Days> 
    <GlacierJobParameters>
      <Tier>Bulk</Tier>
