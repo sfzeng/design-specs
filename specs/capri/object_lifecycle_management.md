@@ -124,6 +124,7 @@ For OpenSDS, lifecycle transitions have the following constraints:
 Conflicting Lifecycle Actions
 For OpenSDS, expiration action is precedence over transition action. 
 For example, there are two rules as below:
+'```
 <LifecycleConfiguration>
   <Rule>
     <ID>Rule 1</ID>
@@ -147,9 +148,11 @@ For example, there are two rules as below:
     </Transition>
    </Rule>
 </LifecycleConfiguration>
+```'
 In this case, OpenSDS just chooses the expiration action on these objects.
 Overlapping Prefixes Resulting in Conflicting Lifecycle Actions
 For example, there are two rules as below:
+'```
 <LifecycleConfiguration>
   <Rule>
     <ID>Rule 1</ID>
@@ -174,7 +177,7 @@ For example, there are two rules as below:
     </Transition>
    </Rule>
 </LifecycleConfiguration>
-
+```'
 In this case, OpenSDS will chooses to transition the subsets of objects with the logs/ key name prefix 10 days after creation.
 # APIs 
 ## PUT Bucket Lifecycle
@@ -189,6 +192,7 @@ Content-MD5: MD5
 
 Request Body
 The lifecycle configuration can be specified in the request body. The configuration is specified as XML consisting of one or more rules.
+'```
 <LifecycleConfiguration>
   <Rule>
     ...
@@ -197,7 +201,7 @@ The lifecycle configuration can be specified in the request body. The configurat
     ...
   </Rule>
 </LifecycleConfiguration>
-
+```'
 The following is a rule example:
 <LifecycleConfiguration>
 <Rule>
