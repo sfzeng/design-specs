@@ -188,13 +188,13 @@ In this case, OpenSDS will chooses to transition the subsets of objects with the
 ## PUT Bucket Lifecycle
 The PUT Bucket Lifecycle operation creates a new lifecycle configuration or replaces an existing one.
 Request Syntax
-PUT bucketname/?lifecycle HTTP/1.1
+```PUT bucketname/?lifecycle HTTP/1.1
 Host: x.x.x.x
 Content-Length: {{length}}
 Date: {{date}}
 Authorization: {{authorizationString}}
 Content-MD5: MD5
-
+```
 Request Body
 The lifecycle configuration can be specified in the request body. The configuration is specified as XML consisting of one or more rules.
 ```<LifecycleConfiguration>
@@ -244,9 +244,9 @@ The following is a rule example:
 </LifecycleConfiguration>
 ```
 Each rule consists of the following:
-● A filter identifying a subset of objects to which the rule applies. The filter can be based on a key name prefix.
-● A status, indicating whether the rule is in effect.
-● One or more lifecycle transition and expiration actions to perform on.
+- A filter identifying a subset of objects to which the rule applies. The filter can be based on a key name prefix.
+- A status, indicating whether the rule is in effect.
+- One or more lifecycle transition and expiration actions to perform on.
 
 The following table describe the elements in the lifecycle rule.
 
