@@ -58,8 +58,11 @@ Generally, users use API to define lifecycle rules on bucket, and then OpenSDS w
 For each rule, there are two main factors:
 1. Time: When to take action, we use days after the creation of an object to define.
 2. Action:
+
 	a. Expiration: delete object.
+
 	b. In-cloud transition: transition from one storage tier to another in the same backend.
+
 	c. Cross-cloud transition: transition from one backend to another.
 
 ***There are three options described as below, we need to choose one of it.***
