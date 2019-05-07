@@ -34,17 +34,19 @@ For both the scenarios we must have APIs defined which can read the lifecycle ru
 
 ## Solution
 ### Defining storage tiers in OpenSDS
+
 Compared with storage class defined in AWS s3, OpenSDS use storage tier internally, and there is a mapping between storage class and storage tier. 
 OpenSDS s3 API is compatible with AWS s3, that means user can use storage class when they use the s3 API, OpenSDS will convert storage class to specific storage tier in background.
 As default, there are three tiers, T1, T99 and T999, and the mapping between storage tier and class is showed as below:
-	| | Tier_1 | Tier_99 | Tier_999 |
-	|---------------|---------------|---------------|---------------|
-	| AWS S3 | STANDARD | STANDARD_IA | GLACIER |
-	| Azure Blob | HOT | COOL | ARCHIVE |
-	| HW OBS | STANDARD | WARM | COLD |
-	| GCP | Multi-Regional | NearLine | ColdLine |
-	| Ceph S3 | STANDARD | - | - |
-	| FusinoStorage Object | STANDARD | - | - |
+
+| | Tier_1 | Tier_99 | Tier_999 |
+|---------------|---------------|---------------|---------------|
+| AWS S3 | STANDARD | STANDARD_IA | GLACIER |
+| Azure Blob | HOT | COOL | ARCHIVE |
+| HW OBS | STANDARD | WARM | COLD |
+| GCP | Multi-Regional | NearLine | ColdLine |
+| Ceph S3 | STANDARD | - | - |
+| FusinoStorage Object | STANDARD | - | - |
 Notes:
 	Hyphen(-) means the specific vendor does not support such tier.
 	In the future, we will provide the ability for users to add their own storage tiers and storage classes, and the mapping between the storage tiers with storage classes.
@@ -146,7 +148,7 @@ User need to pay attention to those minimum storage charges when defining lifecy
 - Tier_99 -> Tier_1: not allowed
 - Tier_999 -> Tier_1: not allowed
 - Tier_999 -> Tier_99: not allowed
-2. Some backends does not support in-cloud transition, for example, Ceph S3 and FusionStorage Object, because they only support one kind of storage tier.
+2. Some backends does not support  in-cloud transition, for example, Ceph S3 and FusionStorage Object, because they only support one kind of storage tier.
 
 **Cross-cloud transition**
 1. The transition from one storage tier to a higher storage tier or to the same storage tier is allowed, but transition from higher storage tier to lower is not allowed.
