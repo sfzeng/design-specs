@@ -36,6 +36,7 @@ For both the scenarios we must have APIs defined which can read the lifecycle ru
 ### Defining storage tiers in OpenSDS
 
 Compared with storage class defined in AWS s3, OpenSDS use storage tier internally, and there is a mapping between storage class and storage tier. 
+
 OpenSDS s3 API is compatible with AWS s3, that means user can use storage class when they use the s3 API, OpenSDS will convert storage class to specific storage tier in background.
 
 As default, there are three tiers, T1, T99 and T999, and the mapping between storage tier and class is showed as below:
@@ -50,8 +51,8 @@ As default, there are three tiers, T1, T99 and T999, and the mapping between sto
 | FusinoStorage Object | STANDARD | - | - |
 
 Notes:
-	Hyphen(-) means the specific vendor does not support such tier.
-	In the future, we will provide the ability for users to add their own storage tiers and storage classes, and the mapping between the storage tiers with storage classes.
+- Hyphen(-) means the specific vendor does not support such tier.
+- In the future, we will provide the ability for users to add their own storage tiers and storage classes, and the mapping between the storage tiers with storage classes.
 
 Generally, users use API to define lifecycle rules on bucket, and then OpenSDS wil scheduling according to those rules and manage the movement of objects.
 For each rule, there are two main factors:
